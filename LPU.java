@@ -62,11 +62,12 @@ class University implements UGC, AICTE
 	static boolean throughUGC = true;				
 	public int getAdmission()
 	{
-		System.out.print("Enter the Percentage Scored in Qualifying Exam: ");
+		System.out.print("\nEnter the Percentage Scored in Qualifying Exam: ");
 		int percentage = p.nextInt(); 
 		if ( percentage >= 60 )
 		{
-			System.out.println("\tCongrtulations!!\tYou are eligible for direct Admission through UGC.");
+			throughUGC = true;
+			System.out.println("\n\tCongrtulations!!\tYou are eligible for direct Admission through UGC.");
 			System.out.println();
 			registration_number = rand.nextInt(range_r) + min_r ;
 			r_item = registration_number;
@@ -74,10 +75,10 @@ class University implements UGC, AICTE
 		}
 		else 
 		{
-			System.out.println("\tSorry!!\tYou are eligible for direct Admission through AICTE.");
+			System.out.println("\n\tSorry!!\tYou are eligible for direct Admission through AICTE.\n");
 			throughUGC = false;
 			LocalDate ld=LocalDate.now();
-			System.out.println("\tYou can join counselling after 5 days, i.e. on: "+ ld.plusDays(5));
+			System.out.println("\tYou can join counselling after 5 days, i.e. on: "+ ld.plusDays(5)+"\n");
 			token_number = rand.nextInt(range_t) + min_t;
 			r_item =  token_number;
 			fee_due = 34000;
@@ -122,12 +123,18 @@ class LPU extends University
 
 	public static void main(String []args)
 	{
-	Scanner in = new Scanner(System.in);
-
-	
-		System.out.println("\t\t\t##############################################"); 
+		Scanner in = new Scanner(System.in);
+		System.out.println("\t\t\t################################################"); 
+		System.out.println("\t\t\t__________________________________________________"); 
+		System.out.println("\t\t\t   UGC & AICTE DIRECT ADMISSION FORUM FOR LPU"); 
+		System.out.println("\t\t\t__________________________________________________"); 
 		System.out.println();
-		System.out.print("Enter your First Name:>");
+		while (true){
+		System.out.print("Do you want to take admission: [Y/N]  ");
+		String flag = in.nextLine();
+		if (flag.equals("N"))
+			break;
+		System.out.print("\nEnter your First Name:>");
 		String name = in.nextLine();
 		LPU obj = new LPU();
 		int r_item = obj.getAdmission();
@@ -146,6 +153,8 @@ class LPU extends University
 		System.out.println();	
 		System.out.println("\tThanks "+name.toUpperCase()+", for choosing LPU , WE ENSURE YOU FOR YOUR BETTER FUTURE !! #THINK_BIG");
 		System.out.println();
+		}
+		System.out.println("\nThanks for Reaching out to our LOVELY Campus.");
 	}
 
 }
